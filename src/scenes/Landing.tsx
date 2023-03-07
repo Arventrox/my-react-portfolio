@@ -1,6 +1,8 @@
-import { FC } from 'react';
-import { motion } from 'framer-motion';
+import { FC, useEffect, useRef } from 'react';
 import useMediaQuery from '../hooks/useMediaQuery';
+import useIntersectionInView from '../hooks/useIntersectionInView';
+
+import { motion } from 'framer-motion';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import SocialMediaIcons from '../components/SocialMediaIcons';
 import profileImage from '../assets/profile-image.png';
@@ -10,12 +12,19 @@ interface LandingProps {
 }
 
 const Landing: FC<LandingProps> = ({ setSelectedPage }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useIntersectionInView(ref);
   const isAboveMediumScreens = useMediaQuery('(min-width:1060px)');
+
+  useEffect(() => {
+    if (isInView && ref.current) setSelectedPage(ref.current.id);
+  }, [isInView, ref, setSelectedPage]);
 
   return (
     <section
       id='home'
       className='md:flex md:justify-between md:items-center md:h-full gap-16 py-10'
+      ref={ref}
     >
       {/* IMAGE SECTION */}
       <div className='md:order-2 flex justify-center basis-3/5 z-10 mt-16 md:mt-32'>
@@ -26,7 +35,7 @@ const Landing: FC<LandingProps> = ({ setSelectedPage }) => {
           >
             <img
               alt='profile'
-              className='hover:filter hover:saturate-200 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[600px]'
+              className='hover:filter hover:saturate-150 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[600px]'
               src={profileImage}
             />
           </div>

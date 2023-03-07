@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FC } from 'react';
 
 import lolRandomImg from '../assets/project-1.png';
-import portfolioImg from '../assets/project-2.jpeg';
+// import portfolioImg from '../assets/project-2.jpeg';
 import smrImg from '../assets/project-3.png';
 
 interface ProjectProps {
@@ -49,7 +49,7 @@ const Projects = () => {
     {
       title: 'My Portfolio',
       description: 'My personal portfolio app',
-      imgURL: portfolioImg,
+      imgURL: lolRandomImg,
     },
     {
       title: 'LOL-Randomized',

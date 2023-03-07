@@ -1,11 +1,23 @@
-import LineGradient from '../components/LineGradient';
+import { FC, useEffect, useRef } from 'react';
 import useMediaQuery from '../hooks/useMediaQuery';
+import useIntersectionInView from '../hooks/useIntersectionInView';
 import { motion } from 'framer-motion';
+import LineGradient from '../components/LineGradient';
 
 import skillsImage from '../assets/skills-image.png';
 
-const MySkills = () => {
+interface MySkillsProps {
+  setSelectedPage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useIntersectionInView(ref);
   const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
+
+  useEffect(() => {
+    if (isInView && ref.current) setSelectedPage(ref.current.id);
+  }, [isInView, ref, setSelectedPage]);
 
   const skills = [
     {
@@ -32,7 +44,7 @@ const MySkills = () => {
   ];
 
   return (
-    <section id='skills' className='pt-10 pb-24'>
+    <section id='skills' className='pt-10 pb-24' ref={ref}>
       {/* HEADER AND IMAGE SECTION */}
       <div className='md:flex md:justify-between md:gap-16 mt-32'>
         <motion.div

@@ -4,15 +4,38 @@ module.exports = {
   mode: 'jiit',
   theme: {
     extend: {
+      // Original
       colors: {
-        blue: '#2CBCE9',
-        red: '#DC4492',
+        blue: '#5E548E',
+        red: '#231942',
         yellow: '#FDCC49',
         grey: '#ededed',
         'deep-blue': '#010026',
         'dark-grey': '#757575',
         'opaque-black': 'rgba(0,0,0,0.35)',
       },
+
+      // my colors
+      // colors: {
+      //   blue: '#9F86C0',
+      //   red: '#5E548E',
+      //   yellow: '#BE95C4',
+      //   grey: '#ededed',
+      //   'deep-blue': '#231942',
+      //   'dark-grey': '#757575',
+      //   'opaque-black': 'rgba(0,0,0,0.35)',
+      // },
+
+      // variant 1
+      // colors: {
+      //   blue: '#028090',
+      //   red: '#02C39A',
+      //   yellow: '#F0F3BD',
+      //   grey: '#ededed',
+      //   'deep-blue': '#010026',
+      //   'dark-grey': '#757575',
+      //   'opaque-black': 'rgba(0,0,0,0.35)',
+      // },
 
       backgroundImage: (theme) => ({
         'gradient-rainbow':
