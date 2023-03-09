@@ -1,6 +1,5 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC } from 'react';
 import useMediaQuery from '../hooks/useMediaQuery';
-import useIntersectionInView from '../hooks/useIntersectionInView';
 import { motion } from 'framer-motion';
 import LineGradient from '../components/LineGradient';
 
@@ -11,13 +10,7 @@ interface MySkillsProps {
 }
 
 const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useIntersectionInView(ref);
   const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
-
-  useEffect(() => {
-    if (isInView && ref.current) setSelectedPage(ref.current.id);
-  }, [isInView, ref, setSelectedPage]);
 
   const skills = [
     {
@@ -44,7 +37,7 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
   ];
 
   return (
-    <section id='skills' className='pt-10 pb-24' ref={ref}>
+    <section id='skills' className='pt-10 pb-24' onMouseOver={() => setSelectedPage('skills')}>
       {/* HEADER AND IMAGE SECTION */}
       <div className='md:flex md:justify-between md:gap-16 mt-32'>
         <motion.div
@@ -58,11 +51,11 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <p className='font-playfair font-semibold text-4xl mb-5'>
-            MY <span className='text-red '>SKILLS</span>
+          <p className='font-playfair font-semibold text-4xl lg:text-5xl xl:text-6xl mb-5'>
+            MY <span className='text-yellow '>SKILLS</span>
           </p>
           <LineGradient width='w-1/3' />
-          <p className='mt-10 mb-7'> adsadsaasasaaaaaaaaaaaaaaaaaaa</p>
+          <p className='mt-10 mb-7 lg:text-3xl'> adsadsaasasaaaaaaaaaaaaaaaaaaa</p>
         </motion.div>
         <div className='mt-16 md:mt-0 '>
           {isAboveMediumScreens ? (
@@ -95,14 +88,16 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
           >
             <div className='relative h-32 '>
               <div className='z-10'>
-                <p className='font-playfair font-semibold text-5xl'>{skill.number}</p>
-                <p className='font-playfair font-semibold text-3xl mt-3'>{skill.name}</p>
+                <p className='font-playfair font-semibold text-5xl lg:text-6xl '>{skill.number}</p>
+                <p className='font-playfair font-semibold text-3xl lg:text-4xl mt-3'>
+                  {skill.name}
+                </p>
               </div>
               <div
                 className={`w-1/2 md:3/4 h-32 ${skill.background} absolute right-0 top-0 z-[-1]`}
               ></div>
             </div>
-            <p className='mt-5'>{skill.description}</p>
+            <p className='mt-5 lg:text-lg'>{skill.description}</p>
           </motion.div>
         ))}
       </div>

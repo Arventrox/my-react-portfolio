@@ -35,25 +35,26 @@ const Link: FC<LinkProps> = ({ page, selectedPage, setSelectedPage }) => {
 const Navbar: FC<NavBarProps> = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const isAboveSmallScreens = useMediaQuery('(min-width: 768px)');
+
   const navbarBackground = isTopOfPage ? '' : 'bg-red';
+  const links = ['Home', 'Skills', 'Projects', 'Testimonials', 'Contact'];
 
   return (
-    <nav className={`${navbarBackground} z-40 w-full fixed top-0 py-6`}>
+    <nav className={`${navbarBackground} z-40 w-full fixed top-0 py-4 lg:py-5 xl:py-6`}>
       <div className={'flex items-center justify-between mx-auto w-5/6'}>
-        <h4 className='font-playfair text-3xl font-bold'>SI</h4>
+        <h4 className='font-playfair text-3xl font-bold lg:text-4xl'>SI</h4>
 
         {/* DESKTOP NAV */}
         {isAboveSmallScreens ? (
-          <div className='flex justify-between gap-16 font-opensans text-sm font-semibold'>
-            <Link page='Home' selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-            <Link page='Skills' selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-            <Link page='Projects' selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-            <Link
-              page='Testimonials'
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-            />
-            <Link page='Contact' selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+          <div className='flex justify-between gap-16 font-opensans text-sm lg:text-lg font-semibold'>
+            {links.map((link, index) => (
+              <Link
+                key={index}
+                page={link}
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+              />
+            ))}
           </div>
         ) : (
           <button

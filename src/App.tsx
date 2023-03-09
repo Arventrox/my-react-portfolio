@@ -45,11 +45,11 @@ const App = () => {
       </div>
       <LineGradient />
       <div className='w-5/6 mx-auto '>
-        <Projects />
+        <Projects setSelectedPage={setSelectedPage} />
       </div>
       <LineGradient />
       <div className='w-5/6 mx-auto '>
-        <Contact />
+        <Contact setSelectedPage={setSelectedPage} />
       </div>
       <Footer />
     </div>

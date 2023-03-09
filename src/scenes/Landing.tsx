@@ -1,6 +1,5 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC } from 'react';
 import useMediaQuery from '../hooks/useMediaQuery';
-import useIntersectionInView from '../hooks/useIntersectionInView';
 
 import { motion } from 'framer-motion';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -12,19 +11,13 @@ interface LandingProps {
 }
 
 const Landing: FC<LandingProps> = ({ setSelectedPage }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useIntersectionInView(ref);
   const isAboveMediumScreens = useMediaQuery('(min-width:1060px)');
-
-  useEffect(() => {
-    if (isInView && ref.current) setSelectedPage(ref.current.id);
-  }, [isInView, ref, setSelectedPage]);
 
   return (
     <section
       id='home'
-      className='md:flex md:justify-between md:items-center md:h-full gap-16 py-10'
-      ref={ref}
+      className='md:flex md:justify-between md:items-center md:h-full  gap-16  py-10'
+      onMouseOver={() => setSelectedPage('home')}
     >
       {/* IMAGE SECTION */}
       <div className='md:order-2 flex justify-center basis-3/5 z-10 mt-16 md:mt-32'>
@@ -67,7 +60,11 @@ const Landing: FC<LandingProps> = ({ setSelectedPage }) => {
               Ivanov
             </span>
           </p>
-          <p className='mt-10 mb-7 text-sm text-center md:text-start'>SOME TEKSDASDSADSA F</p>
+          <p className='mt-10 mb-7 text-sm text-center md:text-start'>
+            Welcome to my online portfolio! I am a [Your Profession] with a passion for [Your Field
+            of Interest]. This website showcases some of my best work and provides an insight into
+            my skills and experience.
+          </p>
         </motion.div>
 
         {/* CALL TO ACTIONS  */}
@@ -95,7 +92,7 @@ const Landing: FC<LandingProps> = ({ setSelectedPage }) => {
             onClick={() => setSelectedPage('contact')}
             href='#contact'
           >
-            <div className='bg-deep-blue hover:text-red transition duration-500 w-full h-full flex items-center justify-center font-playfair px-10'>
+            <div className='bg-deep-blue hover:text-yellow transition duration-500 w-full h-full flex items-center justify-center font-playfair px-10'>
               Let's talk.
             </div>
           </AnchorLink>

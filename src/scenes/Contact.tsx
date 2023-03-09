@@ -1,17 +1,22 @@
-import LineGradient from '../components/LineGradient';
+import { FC } from 'react';
 import { motion } from 'framer-motion';
+import LineGradient from '../components/LineGradient';
 import contactImage from '../assets/contact-image.jpeg';
 
-const Contact = () => {
+interface ContactProps {
+  setSelectedPage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
   // const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{3,}$/i; not working
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const onSubmitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
   };
 
   return (
-    <section id='contact' className='py-48'>
+    <section id='contact' className='py-48' onMouseOver={() => setSelectedPage('contact')}>
       {/* HEADINGS */}
       <motion.div
         className='flex justify-end w-full'
