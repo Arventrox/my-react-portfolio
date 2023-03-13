@@ -3,6 +3,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import useMediaQuery from '../hooks/useMediaQuery';
 import menuIcon from '../assets/menu-icon.svg';
 import closeIcon from '../assets/close-icon.svg';
+import LineGradient from '../components/LineGradient';
 
 interface NavBarProps {
   selectedPage: string;
@@ -40,7 +41,7 @@ const Navbar: FC<NavBarProps> = ({ isTopOfPage, selectedPage, setSelectedPage })
   const links = ['Home', 'Skills', 'Projects', 'Testimonials', 'Contact'];
 
   return (
-    <nav className={`${navbarBackground} z-40 w-full fixed top-0 py-4 lg:py-5 xl:py-6`}>
+    <nav className={`${navbarBackground} z-50 w-full fixed top-0 py-4 lg:py-5 xl:py-6`}>
       <div className={'flex items-center justify-between mx-auto w-5/6'}>
         <h4 className='font-playfair text-3xl font-bold lg:text-4xl'>SI</h4>
 
@@ -90,6 +91,11 @@ const Navbar: FC<NavBarProps> = ({ isTopOfPage, selectedPage, setSelectedPage })
           </div>
         )}
       </div>
+      {!isTopOfPage && (
+        <span className='absolute w-full bottom-0 '>
+          <LineGradient />
+        </span>
+      )}
     </nav>
   );
 };

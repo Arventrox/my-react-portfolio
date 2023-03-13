@@ -7,6 +7,9 @@ import lolRandomImg from '../assets/project-1.png';
 import smrImg from '../assets/project-3.png';
 import useMediaQuery from '../hooks/useMediaQuery';
 
+import leftArrow from '../assets/left-arrow.png';
+import rightArrow from '../assets/right-arrow.png';
+
 interface ProjectProps {
   title: string;
   description: string;
@@ -17,6 +20,25 @@ interface ProjectProps {
 interface ProjectsProps {
   setSelectedPage: React.Dispatch<React.SetStateAction<string>>;
 }
+
+const projects = [
+  {
+    title: 'My Portfolio',
+    description: 'My personal portfolio app',
+    imgURL: lolRandomImg,
+  },
+  {
+    title: 'LOL-Randomized',
+    description: 'An app to randomize League of legends  ',
+    imgURL: lolRandomImg,
+    url: 'https://arventrox.github.io/LOL-Randomized/',
+  },
+  {
+    title: 'SMR Project Design',
+    description: 'A figma UI/UX design for a SMR website',
+    imgURL: smrImg,
+  },
+];
 
 const container = {
   hidden: {},
@@ -48,30 +70,14 @@ const Project: FC<ProjectProps> = ({ title, description, imgURL, url }) => {
     </motion.div>
   );
 };
-const projects = [
-  {
-    title: 'My Portfolio',
-    description: 'My personal portfolio app',
-    imgURL: lolRandomImg,
-  },
-  {
-    title: 'LOL-Randomized',
-    description: 'An app to randomize League of legends  ',
-    imgURL: lolRandomImg,
-    url: 'https://arventrox.github.io/LOL-Randomized/',
-  },
-  {
-    title: 'SMR Project Design',
-    description: 'A figma UI/UX design for a SMR website',
-    imgURL: smrImg,
-  },
-];
+
 const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | undefined>();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1);
   const [startInterval, setStartInterval] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+
   const isAboveSmallScreens = useMediaQuery('(min-width: 768px)');
   const projectsList = useMemo(() => projects, []);
 
@@ -91,7 +97,7 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
         } else {
           return;
         }
-      }, 2500);
+      }, 3500);
 
       setIntervalId(id);
 
@@ -118,13 +124,14 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
   };
 
   const handleMouseLeave = () => {
+    // Start the interval when the element isn't hovered
     setStartInterval(true);
   };
 
   return (
     <section
       id='projects'
-      className=' py-24 '
+      className=' py-36 '
       onMouseOver={() => {
         setSelectedPage('projects');
         setIsVisible(true);
@@ -157,43 +164,45 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
 
       {/* PROJECTS */}
 
-      <div className='flex justify-center'>
+      <div className='flex justify-center  '>
         {isAboveSmallScreens ? (
-          <div className='w-full max-w-[800px] mx-auto flex flex-col items-center'>
-            <div
-              className='relative w-full h-[627px] '
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              {projectsList.map((project, index) => (
-                <div
-                  key={index}
-                  className={`absolute top-0 left-0 w-full h-full opacity-0 transition-opacity duration-500 ease-in-out ${
-                    index === currentIndex ? 'opacity-100' : ''
-                  }`}
-                >
-                  <Project
-                    title={project.title}
-                    description={project.description}
-                    imgURL={project.imgURL}
-                    url={project.url as string}
-                  />
-                </div>
-              ))}
+          <div className='w-full  mx-auto flex flex-col items-center'>
+            <div className='relative w-full  grid grid-flow-col mx-auto h-[500px]'>
+              <div className='w-full  grid  grid-flow-col-dense  h-full relative'>
+                {projectsList.map((project, index) => (
+                  <div
+                    key={index}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    className={` duration-700 ease-in-out   flex items-center justify-between  ${
+                      index === currentIndex ? 'w-[600px] z-40 col-start-2' : 'w-full '
+                    } ${index < currentIndex - 1 && 'col-start-1 z-30  '} 
+                    ${index > currentIndex + 1 && 'col-start-3 z-30  '} `}
+                    onClick={() => setCurrentIndex(index)}
+                  >
+                    <Project
+                      title={project.title}
+                      description={project.description}
+                      imgURL={project.imgURL}
+                      url={project.url as string}
+                    />
+                  </div>
+                ))}
+              </div>
               <button
-                className='absolute top-1/2 left-[-20%] transform-translate-y-1/2 text-2xl  bg-transparent border-none outline-none cursor-pointer  z-40'
+                className=' transform-translate-y-1/2 text-2xl  bg-transparent border-none outline-none cursor-pointer  z-40 col-start-1'
                 onClick={goToPrevSlide}
               >
-                &lt;
+                <img src={leftArrow} alt={'left-arrow'} className='w-16 mr-3' />
               </button>
               <button
-                className='absolute top-1/2 right-[-20%] transform-translate-y-1/2 text-2xl bg-transparent border-none outline-none cursor-pointer z-40'
+                className=' transform-translate-y-1/2 text-2xl bg-transparent border-none outline-none cursor-pointer z-40'
                 onClick={goToNextSlide}
               >
-                &gt;
+                <img src={rightArrow} alt={'right-arrow'} className='w-16 ml-3 ' />
               </button>
 
-              <div className=' absolute bottom-[0%] flex justify-center w-full gap-6 z-50'>
+              <div className=' absolute bottom-[-10%] flex justify-center w-full gap-6 z-50'>
                 {projectsList.map((project, index) => (
                   <div key={index} className='relative inline-block'>
                     <button
