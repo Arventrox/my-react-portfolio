@@ -12,32 +12,39 @@ interface MySkillsProps {
 const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
   const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
 
-  const skills = [
+  const skillsDesc = [
+    'Proficient in front-end web development technologies.',
+    'Skilled in back-end web development technologies.',
+    'Ability to design responsive and user-friendly web interfaces.',
+    'Strong problem-solving and debugging skills.',
+    'Excellent communication and collaboration skills.',
+  ];
+  const skillsCat = [
     {
       number: '01',
-      name: 'Experience',
-      description: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      name: 'Frontend ',
+      description: `Html5, Css, Sass, Tailwind Css, Javascript, ReactJs, React Router, Redux `,
       transitionDelay: 0,
       background: 'bg-blue',
     },
     {
       number: '02',
-      name: 'Innovative',
-      description: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
+      name: 'Backend ',
+      description: 'NodeJs, ExpressJs, Firebase',
       transitionDelay: 0.2,
-      background: 'bg-red',
+      background: 'bg-purple',
     },
     {
       number: '03',
-      name: 'Imaginative',
-      description: 'cccccccccccccccccccccccccccccccccccccc',
+      name: 'Other ',
+      description: 'Git, Adobe Photoshop, Adobe XD, Figma',
       transitionDelay: 0.4,
       background: 'bg-yellow',
     },
   ];
 
   return (
-    <section id='skills' className='pt-10 pb-24' onMouseOver={() => setSelectedPage('skills')}>
+    <section id='skills' className=' lg:py-24' onMouseOver={() => setSelectedPage('skills')}>
       {/* HEADER AND IMAGE SECTION */}
       <div className='md:flex md:justify-between md:gap-16 mt-32'>
         <motion.div
@@ -51,17 +58,24 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <p className='font-playfair font-semibold text-4xl lg:text-5xl xl:text-6xl mb-5'>
-            MY <span className='text-yellow '>SKILLS</span>
+          <p className='font-playfair font-semibold text-4xl xl:text-5xl mb-5 z-10'>
+            MY <span className='text-yellow  z-10'>SKILLS</span>
           </p>
           <LineGradient width='w-1/3' />
-          <p className='mt-10 mb-7 lg:text-3xl'> adsadsaasasaaaaaaaaaaaaaaaaaaa</p>
+          {/* <p className='mt-10 mb-7 lg:text-2xl'> </p> */}
+          <ul className='mt-10  text-lg lg:text-xl text-center ss:text-left  ss:list-disc ss:list-inside '>
+            {skillsDesc.map((skillItem, index) => (
+              <li key={index} className='text-yellow w-full my-1'>
+                <span className='text-white'>{skillItem}</span>
+              </li>
+            ))}
+          </ul>
         </motion.div>
         <div className='mt-16 md:mt-0 '>
           {isAboveMediumScreens ? (
             <div
-              className='relative z-0 ml-20 before:absolute before:-top-10 before:-left-10 
-            	before:w-full  before:h-full before:border-2 before:border-blue before:z-[-1]'
+              className='relative ml-20 before:absolute before:-top-10 before:-left-10 
+            	before:w-full  before:h-full before:border-2 before:border-blue before:z-[-1] z-10'
             >
               <img alt='skills' className='z-10' src={skillsImage} />
             </div>
@@ -72,11 +86,11 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
       </div>
 
       {/* SKILLS */}
-      <div className='md:flex md:justify-between mt-16 gap-32'>
-        {skills.map((skill, index) => (
+      <div className='md:flex md:justify-between my-16 gap-32'>
+        {skillsCat.map((skill, index) => (
           <motion.div
             key={index}
-            className='md:w-1/3 mt-10'
+            className='md:w-1/3 mt-10 z-10'
             initial='hidden'
             whileInView='visible'
             viewport={{ once: true, amount: 0.5 }}
@@ -88,16 +102,18 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
           >
             <div className='relative h-32 '>
               <div className='z-10'>
-                <p className='font-playfair font-semibold text-5xl lg:text-6xl '>{skill.number}</p>
-                <p className='font-playfair font-semibold text-3xl lg:text-4xl mt-3'>
+                <p className='font-playfair font-semibold text-5xl lg:text-5xl xl:text-5xl '>
+                  {skill.number}
+                </p>
+                <p className='font-playfair font-semibold text-3xl lg:text-3xl mt-3 xl:text-4xl'>
                   {skill.name}
                 </p>
               </div>
               <div
-                className={`w-1/2 md:3/4 h-32 ${skill.background} absolute right-0 top-0 z-[-1]`}
+                className={`w-1/2 md:3/4 h-32 ${skill.background} absolute right-0 top-0  z-10`}
               ></div>
             </div>
-            <p className='mt-5 lg:text-lg'>{skill.description}</p>
+            <p className='mt-5 lg:text-lg font-semibold'>{skill.description}</p>
           </motion.div>
         ))}
       </div>

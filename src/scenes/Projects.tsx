@@ -131,7 +131,7 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
   return (
     <section
       id='projects'
-      className=' py-36 '
+      className=' py-36  '
       onMouseOver={() => {
         setSelectedPage('projects');
         setIsVisible(true);
@@ -151,7 +151,7 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
         }}
       >
         <div>
-          <p className='font-playfair font-semibold text-4xl'>
+          <p className='font-playfair font-semibold text-4xl xl:text-5xl'>
             <span className='text-yellow '>PRO</span>JECTS
           </p>
           <div className='flex justify-center mt-5'>
@@ -159,7 +159,11 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
           </div>
         </div>
 
-        <p className='my-10'> Random text xxxxxxxxxxxxxxxxxx</p>
+        <p className=' my-10 md:mb-0 md:text-xl'>
+          In this section, you'll find a selection of websites that I've designed and developed for
+          various clients. Each project showcases my skills and expertise in web development,
+          including front-end design, responsive layouts, and user experience optimization.
+        </p>
       </motion.div>
 
       {/* PROJECTS */}

@@ -7,7 +7,7 @@ interface DotGroupProps {
 }
 
 const DotGroup: FC<DotGroupProps> = ({ selectedPage, setSelectedPage }) => {
-  const anchorLinks = ['home', 'skills', 'projects', 'testimonials', 'contact'];
+  const anchorLinks = ['home', 'about', 'skills', 'projects', 'contact'];
 
   const selectedStyles =
     'relative bg-yellow before:absolute before:w-6 before:h-6 before:rounded-full before:border-2 before:border-yellow before:left-[-50%] before:top-[-50%]';

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { motion } from 'framer-motion';
 import LineGradient from '../components/LineGradient';
-import contactImage from '../assets/contact-image.jpeg';
+import contactImage from '../assets/contact-img.svg';
 
 interface ContactProps {
   setSelectedPage: React.Dispatch<React.SetStateAction<string>>;
@@ -16,10 +16,10 @@ const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
   };
 
   return (
-    <section id='contact' className='py-48' onMouseOver={() => setSelectedPage('contact')}>
+    <section id='contact' className='py-48 ' onMouseOver={() => setSelectedPage('contact')}>
       {/* HEADINGS */}
       <motion.div
-        className='flex justify-end w-full'
+        className='flex justify-end w-full '
         initial='hidden'
         whileInView='visible'
         viewport={{ once: true, amount: 0.5 }}
@@ -30,7 +30,7 @@ const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
         }}
       >
         <div>
-          <p className='font-playfair font-semibold text-4xl'>
+          <p className='font-playfair font-semibold text-4xl xl:text-5xl '>
             <span className='text-yellow '>CONTACT ME</span> TO GET STARTED
           </p>
           <div className='flex md:justify-end my-5'>
@@ -42,7 +42,7 @@ const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
       {/* FORM & IMAGE */}
       <div className='md:flex md:justify-between gap-16 mt-5'>
         <motion.div
-          className='basis-1/2 flex justify-center'
+          className='basis-1/2 flex justify-center '
           initial='hidden'
           whileInView='visible'
           viewport={{ once: true, amount: 0.5 }}
@@ -52,7 +52,7 @@ const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
             visible: { opacity: 1, y: 0 },
           }}
         >
-          <img src={contactImage} alt='contact' />
+          <img src={contactImage} alt='contact' className='z-10 w-[550px]' />
         </motion.div>
 
         <motion.div
@@ -94,7 +94,7 @@ const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
 
             <button
               type='submit'
-              className='p-5 bg-yellow font-semibold text-deep-blue mt-5 hover:bg-red hover:text-white transition duration-500'
+              className='p-5 bg-yellow font-semibold text-deep-blue mt-5 hover:bg-purple hover:text-white transition duration-500 z-10'
             >
               SEND ME A MESSAGE
             </button>

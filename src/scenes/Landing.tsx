@@ -60,10 +60,9 @@ const Landing: FC<LandingProps> = ({ setSelectedPage }) => {
               Ivanov
             </span>
           </p>
-          <p className='mt-10 mb-7 text-sm text-center md:text-start'>
-            Welcome to my online portfolio! I am a [Your Profession] with a passion for [Your Field
-            of Interest]. This website showcases some of my best work and provides an insight into
-            my skills and experience.
+          <p className='mt-10 mb-7 text-sm text-center md:text-start md:text-xl'>
+            Welcome to my online portfolio! I am a web developer that is passionate about creating
+            beautiful and functional websites that provide engaging user experiences.
           </p>
         </motion.div>
 

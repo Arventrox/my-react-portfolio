@@ -23,8 +23,8 @@ const Link: FC<LinkProps> = ({ page, selectedPage, setSelectedPage }) => {
   return (
     <AnchorLink
       className={`${
-        selectedPage === lowerCasePage ? 'text-yellow' : ''
-      } hover:text-yellow transition duration-500`}
+        selectedPage === lowerCasePage ? 'text-yellow bg-deep-blue ss:bg-transparent' : ''
+      } hover:text-yellow transition duration-500 py-5`}
       href={`#${lowerCasePage}`}
       onClick={() => setSelectedPage(lowerCasePage)}
     >
@@ -37,8 +37,8 @@ const Navbar: FC<NavBarProps> = ({ isTopOfPage, selectedPage, setSelectedPage })
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const isAboveSmallScreens = useMediaQuery('(min-width: 768px)');
 
-  const navbarBackground = isTopOfPage ? '' : 'bg-red';
-  const links = ['Home', 'Skills', 'Projects', 'Testimonials', 'Contact'];
+  const navbarBackground = isTopOfPage ? '' : 'bg-purple';
+  const links = ['Home', 'About', 'Skills', 'Projects', 'Contact'];
 
   return (
     <nav className={`${navbarBackground} z-50 w-full fixed top-0 py-4 lg:py-5 xl:py-6`}>
@@ -59,7 +59,7 @@ const Navbar: FC<NavBarProps> = ({ isTopOfPage, selectedPage, setSelectedPage })
           </div>
         ) : (
           <button
-            className='rounded-full bg-red p-2'
+            className='rounded-full bg-purple p-2'
             onClick={() => setIsMenuToggled(!isMenuToggled)}
           >
             <img alt='menu-icon' src={menuIcon}></img>
@@ -68,7 +68,7 @@ const Navbar: FC<NavBarProps> = ({ isTopOfPage, selectedPage, setSelectedPage })
 
         {/* MOBILE MENU POPUP */}
         {!isAboveSmallScreens && isMenuToggled && (
-          <div className='fixed right-0 bottom-0 h-full bg-blue w-[300px]'>
+          <div className='fixed right-0 bottom-0 h-full bg-purple w-[300px] z-50 border-l-2 border-blue'>
             {/* CLOSE ICON */}
             <div className='flex justify-end p-12'>
               <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
@@ -77,15 +77,11 @@ const Navbar: FC<NavBarProps> = ({ isTopOfPage, selectedPage, setSelectedPage })
             </div>
 
             {/* MENU ITEMS */}
-            <div className='flex flex-col gap-10 ml-[33%] text-2xl text-deep-blue'>
+            <div className='flex flex-col  text-center w-full text-2xl text-white  '>
               <Link page='Home' selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+              <Link page='About' selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
               <Link page='Skills' selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
               <Link page='Projects' selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-              <Link
-                page='Testimonials'
-                selectedPage={selectedPage}
-                setSelectedPage={setSelectedPage}
-              />
               <Link page='Contact' selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
             </div>
           </div>
