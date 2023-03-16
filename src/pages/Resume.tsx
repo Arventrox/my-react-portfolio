@@ -1,12 +1,24 @@
 import LineGradient from '../components/LineGradient';
 import { motion } from 'framer-motion';
-import resumeImg from '../assets/resume-image.jpg';
 import myResume from '../assets/stiliyan-resume.pdf';
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
+const PDFViewer = () => {
+  return (
+    <div className='  z-30 scale-50 sm:scale-75 md:scale-[110%] md:mt-10'>
+      <Document file={myResume} renderMode='canvas'>
+        <Page key={`page_1`} pageNumber={1} />
+      </Document>
+    </div>
+  );
+};
 const Portfolio = () => {
   return (
     <>
-      <nav className={`bg-purple z-50 w-full  top-0 py-4 lg:py-5 xl:py-6 relative`}>
+      <nav className={`bg-purple z-50 w-full  top-0 py-4 lg:py-5  relative`}>
         <div className={'flex items-center justify-between mx-auto w-5/6'}>
           <motion.div
             className='md:w-1/3'
@@ -36,8 +48,9 @@ const Portfolio = () => {
         </span>
       </nav>
 
-      <section className='w-3/4 lg:w-2/4 mx-auto  md:h-full lg:py-24  mt-6  z-30 relative '>
-        <img loading='lazy' className='w-full z-30' src={resumeImg} alt='resume'></img>
+      <section className='   sm:mt-6  z-30  flex justify-center   '>
+        {/* <img loading='lazy' className='w-full z-30' src={resumeImg} alt='resume'></img> */}
+        <PDFViewer />
       </section>
     </>
   );
