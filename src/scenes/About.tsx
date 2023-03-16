@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import LineGradient from '../components/LineGradient';
 import aboutImg from '../assets/about-img.svg';
+
 interface AboutProps {
   setSelectedPage: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -34,9 +36,13 @@ const About: FC<AboutProps> = ({ setSelectedPage }) => {
             to ensure that every aspect of a project aligns with the client's goals and
             expectations.
           </p>
-          <button className='bg-gradient-rainblue text-deep-blue rounded-sm py-3 px-7 font-semibold hover:bg-blue hover:text-white transition duration-500 self-start'>
+          <Link
+            to={'resume'}
+            target={'_blank'}
+            className='relative bg-gradient-rainblue text-deep-blue rounded-sm py-3 px-7 font-semibold hover:bg-blue hover:text-white transition duration-500 self-start text-xl'
+          >
             Resume
-          </button>
+          </Link>
         </motion.div>
         <div className='mt-16 md:mt-0 z-10'>
           <img alt='skills' src={aboutImg} />

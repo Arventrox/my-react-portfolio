@@ -67,7 +67,7 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
   ];
 
   return (
-    <section id='skills' className=' lg:py-24' onMouseOver={() => setSelectedPage('skills')}>
+    <section id='skills' className='lg:py-24' onMouseOver={() => setSelectedPage('skills')}>
       {/* HEADER AND IMAGE SECTION */}
       <div className='md:flex md:justify-between md:gap-16 mt-32'>
         <motion.div
@@ -85,7 +85,6 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
             MY <span className='text-yellow  z-10'>SKILLS</span>
           </p>
           <LineGradient width='w-1/3' />
-          {/* <p className='mt-10 mb-7 lg:text-2xl'> </p> */}
           <ul className='mt-10  text-lg lg:text-xl text-center ss:text-left  ss:list-disc ss:list-inside '>
             {skillsDesc.map((skillItem, index) => (
               <li key={index} className='text-yellow w-full my-1'>

@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, SetStateAction, useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import LineGradient from '../components/LineGradient';
 
@@ -30,10 +30,12 @@ interface ProjectProps {
   demoUrl: string;
   handleMouseEnter?: () => void;
   handleMouseLeave?: () => void;
+  setCurrentIndex?: React.Dispatch<SetStateAction<number>>;
+  index?: number;
 }
 
 interface ProjectsProps {
-  setSelectedPage: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedPage: React.Dispatch<SetStateAction<string>>;
 }
 
 const projects = [
@@ -83,6 +85,8 @@ const Project: FC<ProjectProps> = ({
   handleMouseEnter,
   handleMouseLeave,
   demoUrl,
+  index,
+  setCurrentIndex,
 }) => {
   const overlayStyles = `absolute h-full w-full opacity-0 hover:opacity-90 transition duration-500 bg-grey flex flex-col 
   justify-center items-center text-center py-auto ss:p-12 text-deep-blue `;
@@ -94,6 +98,9 @@ const Project: FC<ProjectProps> = ({
       className='relative flex items-center justify-center border-[1px] border-blue my-2 z-30 '
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={() => {
+        if (index !== undefined) setCurrentIndex!(index);
+      }}
     >
       <div className={overlayStyles}>
         <p className='text-2xl font-playfair mt-auto'>{title}</p>
@@ -216,13 +223,11 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
           visible: { opacity: 1, y: 0 },
         }}
       >
-        <div>
-          <p className='font-playfair font-semibold text-4xl xl:text-5xl'>
-            <span className='text-yellow '>PRO</span>JECTS
-          </p>
-          <div className='flex justify-center mt-5'>
-            <LineGradient width='w-1/3' />
-          </div>
+        <p className='font-playfair font-semibold text-4xl xl:text-5xl'>
+          <span className='text-yellow '>PRO</span>JECTS
+        </p>
+        <div className='flex justify-center mt-5'>
+          <LineGradient width='w-1/3' />
         </div>
 
         <p className=' my-10 md:mb-0 md:text-xl'>
@@ -238,15 +243,14 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
         {isAboveSmallScreens ? (
           <div className='w-full  mx-auto flex flex-col items-center'>
             <div className='relative w-full  grid grid-flow-col mx-auto h-[500px]'>
-              <div className='w-full  grid  grid-flow-col-dense  h-full relative '>
+              <div className='w-full grid grid-flow-col-dense'>
                 {projectsList.map((project, index) => (
                   <div
                     key={index}
-                    className={`flex items-center transition duration-700
-                    ${currentIndex === index && 'w-[600px] z-40 col-start-2'}
-                    ${currentIndex - 1 === index && 'col-start-1 z-30  '} 
-                    ${currentIndex + 1 === index && 'col-start-3 z-30'} `}
-                    onClick={() => setCurrentIndex(index)}
+                    className={`flex items-center transition duration-700 ease-in-out z-30
+                    ${currentIndex === index && ' scale-125 z-40 col-start-2'}
+                    ${currentIndex - 1 === index && 'col-start-1'} 
+                    ${currentIndex + 1 === index && 'col-start-3'} `}
                   >
                     <Project
                       title={project.title}
@@ -257,6 +261,8 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
                       demoUrl={project.demoUrl as string}
                       handleMouseEnter={handleMouseEnter}
                       handleMouseLeave={handleMouseLeave}
+                      setCurrentIndex={setCurrentIndex}
+                      index={index}
                     />
                   </div>
                 ))}
