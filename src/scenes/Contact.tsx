@@ -16,7 +16,11 @@ const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
   };
 
   return (
-    <section id='contact' className='py-48 ' onMouseOver={() => setSelectedPage('contact')}>
+    <section
+      id='contact'
+      className='py-24 ss:py-48 '
+      onMouseOver={() => setSelectedPage('contact')}
+    >
       {/* HEADINGS */}
       <motion.div
         className='flex justify-end w-full '

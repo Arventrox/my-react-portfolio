@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import Particles from 'react-tsparticles';
-import type { Container, Engine } from 'tsparticles-engine';
+import type { Engine } from 'tsparticles-engine';
 import { loadSnowPreset } from 'tsparticles-preset-snow';
 
 const Particle = () => {
@@ -8,15 +8,10 @@ const Particle = () => {
     await loadSnowPreset(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    await console.log(container);
-  }, []);
-
   return (
     <Particles
       id='tsparticles'
       init={particlesInit}
-      loaded={particlesLoaded}
       options={{
         fullScreen: {
           enable: true,

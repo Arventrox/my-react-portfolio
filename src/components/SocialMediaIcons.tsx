@@ -1,20 +1,27 @@
 import instagramIcon from '../assets/instagram.png';
+import linkedinIcon from '../assets/linkedin.png';
 import gitHubIcon from '../assets/github-mark-white.png';
 import facebookIcon from '../assets/facebook.png';
 
 const SocialMediaIcons = () => {
   const socialMediaItems = [
     {
-      url: 'https://www.instagram.com/stiliyan._ivanov/',
-      icon: instagramIcon,
-      alt: 'instagram-link',
-      imgClassName: 'hover:opacity-50 transition duration-500',
+      url: 'https://www.linkedin.com/in/stiliyan-ivanov-30744a26a/',
+      icon: linkedinIcon,
+      alt: 'linkedin-link',
+      anchorClassName: 'hover:opacity-50 transition duration-500 w-[30px]',
     },
     {
       url: 'https://github.com/Arventrox',
       icon: gitHubIcon,
       alt: 'gitHub-link',
       anchorClassName: 'hover:opacity-50 transition duration-500 w-[30px]',
+    },
+    {
+      url: 'https://www.instagram.com/stiliyan._ivanov/',
+      icon: instagramIcon,
+      alt: 'instagram-link',
+      imgClassName: 'hover:opacity-50 transition duration-500',
     },
     {
       url: 'https://www.facebook.com/stiliqn.ivanov.121/',

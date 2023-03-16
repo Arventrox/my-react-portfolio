@@ -3,18 +3,33 @@ import { motion } from 'framer-motion';
 import LineGradient from '../components/LineGradient';
 
 import lolRandomImg from '../assets/project-1.png';
-// import portfolioImg from '../assets/project-2.jpeg';
+import portfolioImg from '../assets/project-2.png';
 import smrImg from '../assets/project-3.png';
 import useMediaQuery from '../hooks/useMediaQuery';
 
 import leftArrow from '../assets/left-arrow.png';
 import rightArrow from '../assets/right-arrow.png';
 
+import githubIcon from '../assets/github-icon.png';
+import demoIcon from '../assets/demo-icon.png';
+
+import sassIcon from '../assets/sass-icon.png';
+import tailwindIcon from '../assets/tailwind-icon.png';
+import reactIcon from '../assets/react-icon.png';
+import nodeIcon from '../assets/node-icon.png';
+import expressIcon from '../assets/express-icon.png';
+import reduxIcon from '../assets/redux-icon.png';
+import cssIcon from '../assets/css-icon.png';
+
 interface ProjectProps {
   title: string;
   description: string;
+  technologies: string[];
   imgURL: string;
-  url: string;
+  githubUrl: string;
+  demoUrl: string;
+  handleMouseEnter?: () => void;
+  handleMouseLeave?: () => void;
 }
 
 interface ProjectsProps {
@@ -25,18 +40,25 @@ const projects = [
   {
     title: 'My Portfolio',
     description: 'My personal portfolio app',
-    imgURL: lolRandomImg,
+    technologies: [`${reactIcon}`, `${tailwindIcon}`, `${nodeIcon}`, `${expressIcon}`],
+    githubUrl: 'https://github.com/Arventrox/my-react-portfolio',
+    imgURL: portfolioImg,
   },
   {
     title: 'LOL-Randomized',
     description: 'An app to randomize League of legends  ',
+    technologies: [`${reactIcon}`, `${sassIcon}`],
     imgURL: lolRandomImg,
-    url: 'https://arventrox.github.io/LOL-Randomized/',
+    githubUrl: 'https://github.com/Arventrox/LOL-Randomized',
+    demoUrl: 'https://arventrox.github.io/LOL-Randomized/',
   },
   {
     title: 'SMR Project Design',
     description: 'A figma UI/UX design for a SMR website',
+    technologies: [`${reactIcon}`, `${reduxIcon}`, `${cssIcon}`],
     imgURL: smrImg,
+    githubUrl: 'https://github.com/Arventrox/LOL-Randomized',
+    demoUrl: 'https://arventrox.github.io/LOL-Randomized/',
   },
 ];
 
@@ -52,19 +74,62 @@ const projectVariant = {
   visible: { opacity: 1, scale: 1 },
 };
 
-const Project: FC<ProjectProps> = ({ title, description, imgURL, url }) => {
-  const overlayStyles = `absolute h-full w-full opacity-0 hover:opacity-90 transition duration-500 bg-grey z-30 flex flex-col 
-  justify-center items-center text-center p-16 text-deep-blue`;
+const Project: FC<ProjectProps> = ({
+  title,
+  description,
+  technologies,
+  imgURL,
+  githubUrl,
+  handleMouseEnter,
+  handleMouseLeave,
+  demoUrl,
+}) => {
+  const overlayStyles = `absolute h-full w-full opacity-0 hover:opacity-90 transition duration-500 bg-grey flex flex-col 
+  justify-center items-center text-center py-auto ss:p-12 text-deep-blue `;
   const projectAlt = title.split(' ').join('-').toLowerCase();
 
   return (
-    <motion.div variants={projectVariant} className='relative flex items-center justify-center'>
+    <motion.div
+      variants={projectVariant}
+      className='relative flex items-center justify-center border-[1px] border-blue my-2 z-30 '
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className={overlayStyles}>
-        <p className='text-2xl font-playfair'>{title}</p>
-        <p className='mt-7'>{description}</p>
-        <a className='mt-7' href={url} target='_blank' rel='noreferrer'>
-          {url}
-        </a>
+        <p className='text-2xl font-playfair mt-auto'>{title}</p>
+        <p className='mt-2 ss:mt-4'>{description}</p>
+        <div className='flex flex-col items-center w-full ss:w-1/2 ss:py-4'>
+          <p className='w-full ss:mt-4'>Technologies used</p>
+          <div className='flex justify-between  w-full ss:mt-4'>
+            {technologies.map((technology, index) => (
+              <img key={index} className='w-10 mx-auto' src={technology} alt={'technology-icon'} />
+            ))}
+          </div>
+        </div>
+        <div className='flex  justify-center ss:mt-4 md:mt-auto '>
+          {githubUrl && (
+            <a
+              className=' mx-4 flex flex-col items-center text-center'
+              href={githubUrl}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img className=' w-10' src={githubIcon} alt={'github-link'}></img>
+              Github
+            </a>
+          )}
+          {demoUrl && (
+            <a
+              className=' mx-4 flex flex-col items-center text-center'
+              href={demoUrl}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img className='w-10' src={demoIcon} alt={'demo-link'}></img>
+              Demo
+            </a>
+          )}
+        </div>
       </div>
       <img src={imgURL} alt={projectAlt} className='bg-center'></img>
     </motion.div>
@@ -97,7 +162,7 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
         } else {
           return;
         }
-      }, 3500);
+      }, 5000);
 
       setIntervalId(id);
 
@@ -106,14 +171,15 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
   }, [isVisible, projectsList, currentIndex, startInterval]);
 
   const goToPrevSlide = () => {
-    const newIndex = (currentIndex - 1 + projectsList.length) % projectsList.length;
-    setCurrentIndex(newIndex);
+    if (0 < currentIndex) setCurrentIndex((index) => index - 1);
+    if (currentIndex === 0) setCurrentIndex(projectsList.length - 1);
   };
 
   const goToNextSlide = () => {
-    const newIndex = (currentIndex + 1) % projectsList.length;
-    setCurrentIndex(newIndex);
+    if (currentIndex < projectsList.length) setCurrentIndex((index) => index + 1);
+    if (currentIndex === projectsList.length - 1) setCurrentIndex(0);
   };
+  console.log(currentIndex);
 
   const handleMouseEnter = () => {
     // Clear the interval when the element is hovered over
@@ -160,9 +226,9 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
         </div>
 
         <p className=' my-10 md:mb-0 md:text-xl'>
-          In this section, you'll find a selection of websites that I've designed and developed for
-          various clients. Each project showcases my skills and expertise in web development,
-          including front-end design, responsive layouts, and user experience optimization.
+          In this section, you'll find a selection of websites that I've designed and developed.
+          Each project showcases my skills and expertise in web development, including front-end
+          design, responsive layouts, and user experience optimization.
         </p>
       </motion.div>
 
@@ -172,23 +238,25 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
         {isAboveSmallScreens ? (
           <div className='w-full  mx-auto flex flex-col items-center'>
             <div className='relative w-full  grid grid-flow-col mx-auto h-[500px]'>
-              <div className='w-full  grid  grid-flow-col-dense  h-full relative'>
+              <div className='w-full  grid  grid-flow-col-dense  h-full relative '>
                 {projectsList.map((project, index) => (
                   <div
                     key={index}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    className={` duration-700 ease-in-out   flex items-center justify-between  ${
-                      index === currentIndex ? 'w-[600px] z-40 col-start-2' : 'w-full '
-                    } ${index < currentIndex - 1 && 'col-start-1 z-30  '} 
-                    ${index > currentIndex + 1 && 'col-start-3 z-30  '} `}
+                    className={`flex items-center transition duration-700
+                    ${currentIndex === index && 'w-[600px] z-40 col-start-2'}
+                    ${currentIndex - 1 === index && 'col-start-1 z-30  '} 
+                    ${currentIndex + 1 === index && 'col-start-3 z-30'} `}
                     onClick={() => setCurrentIndex(index)}
                   >
                     <Project
                       title={project.title}
                       description={project.description}
+                      technologies={project.technologies}
                       imgURL={project.imgURL}
-                      url={project.url as string}
+                      githubUrl={project.githubUrl as string}
+                      demoUrl={project.demoUrl as string}
+                      handleMouseEnter={handleMouseEnter}
+                      handleMouseLeave={handleMouseLeave}
                     />
                   </div>
                 ))}
@@ -232,7 +300,7 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
           </div>
         ) : (
           <motion.div
-            className='sm:grid sm:grid-cols-3'
+            className='sm:grid sm:grid-cols-3 '
             initial='hidden'
             whileInView='visible'
             viewport={{ once: true, amount: 0.5 }}
@@ -243,8 +311,10 @@ const Projects: FC<ProjectsProps> = ({ setSelectedPage }) => {
                 key={index}
                 title={project.title}
                 description={project.description}
+                technologies={project.technologies}
                 imgURL={project.imgURL}
-                url={project.url as string}
+                githubUrl={project.githubUrl as string}
+                demoUrl={project.demoUrl as string}
               />
             ))}
           </motion.div>

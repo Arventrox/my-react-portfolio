@@ -24,11 +24,11 @@ const Landing: FC<LandingProps> = ({ setSelectedPage }) => {
         {isAboveMediumScreens ? (
           <div
             className='relative z-0 ml-20 before:absolute before:-top-20 before:-left-20 before:rounded-t-[400px]
-            before:w-full before:max-w-[400px] md:before:max-w-[600px] before:h-full before:border-2 before:border-blue before:z-[-1]'
+            before:w-full before:max-w-[400px] md:before:max-w-[500px] before:h-full before:border-2 before:border-blue before:z-[-1]'
           >
             <img
               alt='profile'
-              className='hover:filter hover:saturate-150 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[600px]'
+              className='hover:filter hover:saturate-150 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[500px]'
               src={profileImage}
             />
           </div>
@@ -54,7 +54,7 @@ const Landing: FC<LandingProps> = ({ setSelectedPage }) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <p className='text-6xl font-playfair z-10 text-center md:text-start'>
+          <p className='text-6xl font-playfair z-10 text-center md:text-start w-25'>
             Stiliyan {''}
             <span className='xs:relative xs:text-deep-blue xs:font-semibold z-20 xs:before:content-brush before:absolute before:-left-[25px] before:-top-[70px] before:z-[-1]'>
               Ivanov

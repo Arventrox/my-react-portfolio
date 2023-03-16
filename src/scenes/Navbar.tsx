@@ -24,7 +24,7 @@ const Link: FC<LinkProps> = ({ page, selectedPage, setSelectedPage }) => {
     <AnchorLink
       className={`${
         selectedPage === lowerCasePage ? 'text-yellow bg-deep-blue ss:bg-transparent' : ''
-      } hover:text-yellow transition duration-500 py-5`}
+      } hover:text-yellow transition duration-500 py-5 ss:py-1`}
       href={`#${lowerCasePage}`}
       onClick={() => setSelectedPage(lowerCasePage)}
     >

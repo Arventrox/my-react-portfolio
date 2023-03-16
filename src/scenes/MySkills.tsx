@@ -5,6 +5,21 @@ import LineGradient from '../components/LineGradient';
 
 import skillsImage from '../assets/skills-image.png';
 
+import htmlIcon from '../assets/html-icon.png';
+import cssIcon from '../assets/css-icon.png';
+import sassIcon from '../assets/sass-icon.png';
+import tailwindIcon from '../assets/tailwind-icon.png';
+import javaScriptIcon from '../assets/javascript-icon.png';
+import reactIcon from '../assets/react-icon.png';
+import reduxIcon from '../assets/redux-icon.png';
+import nodeIcon from '../assets/node-icon.png';
+import expressIcon from '../assets/express-icon.png';
+import firebaseIcon from '../assets/firebase-icon.png';
+import gitIcon from '../assets/git-icon.png';
+import figmaIcon from '../assets/figma-icon.png';
+import adobeXdIcon from '../assets/adobexd-icon.png';
+import photoshopIcon from '../assets/photoshop-icon.png';
+
 interface MySkillsProps {
   setSelectedPage: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -23,21 +38,29 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
     {
       number: '01',
       name: 'Frontend ',
-      description: `Html5, Css, Sass, Tailwind Css, Javascript, ReactJs, React Router, Redux `,
+      description: [
+        `${javaScriptIcon}`,
+        `${reactIcon}`,
+        `${reduxIcon}`,
+        `${htmlIcon}`,
+        `${cssIcon}`,
+        `${sassIcon}`,
+        `${tailwindIcon}`,
+      ],
       transitionDelay: 0,
       background: 'bg-blue',
     },
     {
       number: '02',
       name: 'Backend ',
-      description: 'NodeJs, ExpressJs, Firebase',
+      description: [`${nodeIcon}`, `${expressIcon}`, `${firebaseIcon}`],
       transitionDelay: 0.2,
       background: 'bg-purple',
     },
     {
       number: '03',
       name: 'Other ',
-      description: 'Git, Adobe Photoshop, Adobe XD, Figma',
+      description: [`${gitIcon}`, `${photoshopIcon}`, `${adobeXdIcon}`, `${figmaIcon}`],
       transitionDelay: 0.4,
       background: 'bg-yellow',
     },
@@ -113,7 +136,17 @@ const MySkills: FC<MySkillsProps> = ({ setSelectedPage }) => {
                 className={`w-1/2 md:3/4 h-32 ${skill.background} absolute right-0 top-0  z-10`}
               ></div>
             </div>
-            <p className='mt-5 lg:text-lg font-semibold'>{skill.description}</p>
+            <div className='flex my-7 '>
+              {skill.description.map((skillLogo, index) => (
+                <img
+                  key={index}
+                  className=' w-10 mr-1 md:mx-3'
+                  src={skillLogo}
+                  alt={'skill-icon'}
+                  loading='lazy'
+                ></img>
+              ))}
+            </div>
           </motion.div>
         ))}
       </div>
