@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/my-react-portfolio/static/css/main.13cef54c.css",
+    "main.js": "/my-react-portfolio/static/js/main.f9e00e47.js",
+    "static/media/project-3.png": "/my-react-portfolio/static/media/project-3.ea9817ef23856937e69e.png",
+    "static/media/project-1.png": "/my-react-portfolio/static/media/project-1.018aa71f1feff7dbab19.png",
+    "static/media/profile-image.png": "/my-react-portfolio/static/media/profile-image.d0057630c6be062ba9e4.png",
+    "static/media/skills-image.png": "/my-react-portfolio/static/media/skills-image.51e40da64df180a7669a.png",
+    "static/media/git-icon.png": "/my-react-portfolio/static/media/git-icon.8fa70958960c0b9085e8.png",
+    "static/media/github-icon.png": "/my-react-portfolio/static/media/github-icon.10fb52bfd2752e8b23c0.png",
+    "static/media/project-2.png": "/my-react-portfolio/static/media/project-2.d6cfa5fd2fe148cbbcdd.png",
+    "static/media/figma-icon.png": "/my-react-portfolio/static/media/figma-icon.de9ddc6c2c43c542a17e.png",
+    "static/media/firebase-icon.png": "/my-react-portfolio/static/media/firebase-icon.bff5748e0ad72bf0c427.png",
+    "static/media/stiliyan-resume.pdf": "/my-react-portfolio/static/media/stiliyan-resume.f0194029833792970d49.pdf",
+    "static/media/redux-icon.png": "/my-react-portfolio/static/media/redux-icon.5de70b7bc0d2556a0958.png",
+    "static/media/sass-icon.png": "/my-react-portfolio/static/media/sass-icon.22fd4343a840941d8a91.png",
+    "static/media/brush.png": "/my-react-portfolio/static/media/brush.85c9bab5ba2d7dcae1e3.png",
+    "static/media/css-icon.png": "/my-react-portfolio/static/media/css-icon.2dbd7c56d6e1329116c6.png",
+    "static/media/react-icon.png": "/my-react-portfolio/static/media/react-icon.20adfb35ae6a6e5817bf.png",
+    "static/media/javascript-icon.png": "/my-react-portfolio/static/media/javascript-icon.1707d09a3f6f31bb97e8.png",
+    "static/media/node-icon.png": "/my-react-portfolio/static/media/node-icon.31c0e97d5776c294d370.png",
+    "static/media/express-icon.png": "/my-react-portfolio/static/media/express-icon.39a0f4c3d981885c64f8.png",
+    "static/media/about-img.svg": "/my-react-portfolio/static/media/about-img.c9bf898af64df8285dbdaed3570ab455.svg",
+    "static/media/adobexd-icon.png": "/my-react-portfolio/static/media/adobexd-icon.63f3af71917f5580650a.png",
+    "static/media/contact-img.svg": "/my-react-portfolio/static/media/contact-img.d803b82274c2d142ea5be6a5aaae3bd2.svg",
+    "index.html": "/my-react-portfolio/index.html",
+    "static/media/close-icon.svg": "/my-react-portfolio/static/media/close-icon.36a1df96f812b5f4c12f817f90a904c6.svg",
+    "static/media/menu-icon.svg": "/my-react-portfolio/static/media/menu-icon.9cbfc3090b4b0aec575128df8ede3633.svg",
+    "main.13cef54c.css.map": "/my-react-portfolio/static/css/main.13cef54c.css.map",
+    "main.f9e00e47.js.map": "/my-react-portfolio/static/js/main.f9e00e47.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.13cef54c.css",
+    "static/js/main.f9e00e47.js"
+  ]
+}
