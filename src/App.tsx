@@ -10,8 +10,8 @@ const App = () => {
     <div className='app'>
       <Particle />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/resume' element={<Resume />} />
+        <Route path='my-react-portfolio/' element={<Home />} />
+        <Route path='my-react-portfolio/resume' element={<Resume />} />
       </Routes>
     </div>
   );
