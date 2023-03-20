@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { motion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
 import LineGradient from '../components/LineGradient';
 import contactImage from '../assets/contact-img.svg';
 
@@ -8,11 +9,17 @@ interface ContactProps {
 }
 
 const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
-  // const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{3,}$/i; not working
-  // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const {
+    trigger,
+    register,
+    formState: { errors },
+  } = useForm();
 
   const onSubmitHandler = async (event: React.FormEvent) => {
-    event.preventDefault();
+    const isValid = await trigger();
+    if (!isValid) {
+      event.preventDefault();
+    }
   };
 
   return (
@@ -70,32 +77,52 @@ const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
             visible: { opacity: 1, y: 0 },
           }}
         >
-          <form target='_blank' onSubmit={onSubmitHandler} action='' method='POST'>
+          <form
+            target='_blank'
+            className='z-30 relative'
+            onSubmit={onSubmitHandler}
+            action='https://formsubmit.co/6ca65ced24184c16c3124fb35897ff74 '
+            method='POST'
+          >
             <input
               className='w-full bg-blue font-semibold placeholder-opaque-black p-3'
               type='text'
-              required={true}
               placeholder='NAME'
-              maxLength={100}
+              {...register('name', { required: true, maxLength: 100 })}
             />
+            {errors.name && (
+              <p className='text-red-400 mt-1'>
+                {errors.name.type === 'required' && 'This field is required.'}
+                {errors.name.type === 'maxLength' && 'Max length is 100 char.'}
+              </p>
+            )}
 
             <input
               className='w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5'
-              type='email'
+              type='text'
               placeholder='EMAIL'
-              required={true}
-              // pattern={}
+              {...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
             />
-
+            {errors.email && (
+              <p className='text-red-400 mt-1'>
+                {errors.email.type === 'required' && 'This field is required.'}
+                {errors.email.type === 'pattern' && 'Invalid email address.'}
+              </p>
+            )}
             <textarea
               className='w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5'
               placeholder='MESSAGE'
-              required={true}
               rows={4}
               cols={50}
               maxLength={2000}
+              {...register('message', { required: true, maxLength: 2000 })}
             />
-
+            {errors.message && (
+              <p className='text-red-400 mt-1'>
+                {errors.message.type === 'required' && 'This field is required.'}
+                {errors.message.type === 'maxLength' && 'Max length is 2000 char.'}
+              </p>
+            )}
             <button
               type='submit'
               className='p-5 bg-yellow font-semibold text-deep-blue mt-5 hover:bg-purple hover:text-white transition duration-500 z-10'
