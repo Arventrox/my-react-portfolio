@@ -1,8 +1,7 @@
 {
   "files": {
     "main.css": "/my-react-portfolio/static/css/main.13cef54c.css",
-    "main.js": "/my-react-portfolio/static/js/main.859f6a84.js",
-    "static/media/project-3.png": "/my-react-portfolio/static/media/project-3.ea9817ef23856937e69e.png",
+    "main.js": "/my-react-portfolio/static/js/main.452ff0c9.js",
     "static/media/project-1.png": "/my-react-portfolio/static/media/project-1.018aa71f1feff7dbab19.png",
     "static/media/profile-image.png": "/my-react-portfolio/static/media/profile-image.d0057630c6be062ba9e4.png",
     "static/media/skills-image.png": "/my-react-portfolio/static/media/skills-image.51e40da64df180a7669a.png",
@@ -14,6 +13,7 @@
     "static/media/stiliyan-resume.pdf": "/my-react-portfolio/static/media/stiliyan-resume.f0194029833792970d49.pdf",
     "static/media/redux-icon.png": "/my-react-portfolio/static/media/redux-icon.5de70b7bc0d2556a0958.png",
     "static/media/sass-icon.png": "/my-react-portfolio/static/media/sass-icon.22fd4343a840941d8a91.png",
+    "static/media/project-3.png": "/my-react-portfolio/static/media/project-3.873f1cb59d892be362e7.png",
     "static/media/brush.png": "/my-react-portfolio/static/media/brush.85c9bab5ba2d7dcae1e3.png",
     "static/media/css-icon.png": "/my-react-portfolio/static/media/css-icon.2dbd7c56d6e1329116c6.png",
     "static/media/react-icon.png": "/my-react-portfolio/static/media/react-icon.20adfb35ae6a6e5817bf.png",
@@ -27,10 +27,10 @@
     "static/media/close-icon.svg": "/my-react-portfolio/static/media/close-icon.36a1df96f812b5f4c12f817f90a904c6.svg",
     "static/media/menu-icon.svg": "/my-react-portfolio/static/media/menu-icon.9cbfc3090b4b0aec575128df8ede3633.svg",
     "main.13cef54c.css.map": "/my-react-portfolio/static/css/main.13cef54c.css.map",
-    "main.859f6a84.js.map": "/my-react-portfolio/static/js/main.859f6a84.js.map"
+    "main.452ff0c9.js.map": "/my-react-portfolio/static/js/main.452ff0c9.js.map"
   },
   "entrypoints": [
     "static/css/main.13cef54c.css",
-    "static/js/main.859f6a84.js"
+    "static/js/main.452ff0c9.js"
   ]
 }
