@@ -4,7 +4,7 @@ import LineGradient from '../components/LineGradient';
 
 import lolRandomImg from '../assets/project-1.png';
 import portfolioImg from '../assets/project-2.png';
-import smrImg from '../assets/project-3.png';
+import bookCartImg from '../assets/project-3.png';
 import useMediaQuery from '../hooks/useMediaQuery';
 
 import leftArrow from '../assets/left-arrow.png';
@@ -53,12 +53,11 @@ const projects = [
     demoUrl: 'https://arventrox.github.io/LOL-Randomized/',
   },
   {
-    title: 'SMR Project Design',
-    description: 'A figma UI/UX design for a SMR website',
+    title: 'Basic Cart',
+    description: 'A basic book cart app.',
     technologies: [`${reactIcon}`, `${reduxIcon}`, `${cssIcon}`],
-    imgURL: smrImg,
-    githubUrl: 'https://github.com/Arventrox/LOL-Randomized',
-    demoUrl: 'https://arventrox.github.io/LOL-Randomized/',
+    imgURL: bookCartImg,
+    githubUrl: 'https://github.com/Arventrox/book-store',
   },
 ];
 
