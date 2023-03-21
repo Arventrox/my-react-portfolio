@@ -16,8 +16,6 @@ import demoIcon from '../assets/demo-icon.png';
 import sassIcon from '../assets/sass-icon.png';
 import tailwindIcon from '../assets/tailwind-icon.png';
 import reactIcon from '../assets/react-icon.png';
-import nodeIcon from '../assets/node-icon.png';
-import expressIcon from '../assets/express-icon.png';
 import reduxIcon from '../assets/redux-icon.png';
 import cssIcon from '../assets/css-icon.png';
 
@@ -42,7 +40,7 @@ const projects = [
   {
     title: 'My Portfolio',
     description: 'My personal portfolio app',
-    technologies: [`${reactIcon}`, `${tailwindIcon}`, `${nodeIcon}`, `${expressIcon}`],
+    technologies: [`${reactIcon}`, `${tailwindIcon}`],
     githubUrl: 'https://github.com/Arventrox/my-react-portfolio',
     imgURL: portfolioImg,
   },

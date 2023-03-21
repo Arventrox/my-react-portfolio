@@ -81,7 +81,7 @@ const Contact: FC<ContactProps> = ({ setSelectedPage }) => {
             target='_blank'
             className='z-30 relative'
             onSubmit={onSubmitHandler}
-            action='https://formsubmit.co/6ca65ced24184c16c3124fb35897ff74 '
+            action='https://formsubmit.co/6ca65ced24184c16c3124fb35897ff74'
             method='POST'
           >
             <input
